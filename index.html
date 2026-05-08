@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📊 Website Analytics</h1>
+            <p>Real-time tracking dashboard</p>
+        </header>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number" id="totalViews">0</div>
+                <div class="stat-label">Total Views</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="uniqueVisitors">0</div>
+                <div class="stat-label">Unique Visitors</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="todayViews">0</div>
+                <div class="stat-label">Today's Views</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="avgSession">0s</div>
+                <div class="stat-label">Avg Session</div>
+            </div>
+        </div>
+
+        <div class="charts-section">
+            <div class="chart-card">
+                <h3>Top Referrers</h3>
+                <ul id="referrersList"></ul>
+            </div>
+            <div class="chart-card">
+                <h3>Recent Visitors</h3>
+                <ul id="recentVisitors"></ul>
+            </div>
+        </div>
+
+        <div class="export-section">
+            <button id="exportData">📥 Export Data (JSON)</button>
+            <button id="resetData">🗑️ Reset All Data</button>
+        </div>
+    </div>
+
+    <!-- Tracking Pixel (invisible) - embed this on other pages -->
+    <script id="tracker-pixel" type="text/plain">
+        <!-- Paste this script on pages you want to track -->
+        (function(){
+            fetch('https://your-domain.com/track?ref='+encodeURIComponent(document.referrer)+'&url='+encodeURIComponent(window.location.href)+'&title='+encodeURIComponent(document.title),{method:'POST'});
+        })();
+    </script>
+
+    <script src="script.js"></script>
+</body>
+</html>
